@@ -1,0 +1,162 @@
+{
+    "i18n": true,
+    "type": "tabs",
+    "items": {
+        "tab1": {
+            "type": "panel",
+            "label": "Tab Netgear",
+            "items": {
+                "_headerAdapter": {
+                    "type": "header",
+                    "text": "netgear adapter settings",
+                    "size": 2
+                },
+                "netgear": {
+                    "newLine": true,
+                    "sm": 12,
+                    "noDelete": false,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "checkbox",
+                            "attr": "activ",
+                            "width": 60,
+                            "title": "activ",
+                            "tooltip": "ACTIV",
+                            "filter": true,
+                            "sort": true,
+                            "default": false,
+                            "style": {
+                                "textAlign": "center",
+                                "width": 60
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "attr": "ip_name",
+                            "width": 150,
+                            "title": "ipname",
+                            "tooltip": "IPNAME",
+                            "filter": true,
+                            "sort": true,
+                            "default": "",
+                            "style": {
+                                "textAlign": "center",
+                                "width": 150
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "attr": "ip",
+                            "width": 200,
+                            "title": "netgear_ip",
+                            "tooltip": "NETGEAR_IP",
+                            "filter": false,
+                            "sort": false,
+                            "default": "",
+                            "style": {
+                                "width": 200
+                            }
+                        },
+                        {
+                            "type": "password",
+                            "attr": "password",
+                            "width": 200,
+                            "title": "password",
+                            "tooltip": "PASSWORD",
+                            "filter": false,
+                            "sort": false,
+                            "hidden": "_alive",
+                            "default": "",
+                            "style": {
+                                "width": 200
+                            }
+                        },
+                        {
+                            "type": "select",
+                            "attr": "protocol",
+                            "width": 100,
+                            "title": "mode",
+                            "tooltip": "MODE",
+                            "filter": false,
+                            "sort": false,
+                            "options": [
+                                { "label": "htm", "value": "htm" },
+                                { "label": "cgi", "value": "cgi" }
+                            ],
+                            "default": "htm",
+                            "style": {
+                                "width": 100
+                            }
+                        },
+                        {
+                            "type": "selectSendTo",
+                            "title": "icon64",
+                            "tooltip": "ICON64",
+                            "attr": "picture",
+                            "disabled": "!data.activ",
+                            "jsonData": "{\"icon\":{\"icons\":${JSON.stringify(globalData.icons)}}}",
+                            "command": "getIconList",
+                            "width": 200,
+                            "alsoDependsOn": ["icons"],
+                            "style": {
+                                "textAlign": "center",
+                                "width": 200
+                            }
+                        },
+                        {
+                            "type": "number",
+                            "attr": "interval",
+                            "width": 60,
+                            "title": "interval",
+                            "tooltip": "INTERVAL",
+                            "filter": false,
+                            "sort": false,
+                            "default": 60,
+                            "style": {
+                                "width": 60
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "tab2": {
+            "type": "panel",
+            "label": "Tab icons",
+            "items": {
+                "_headerICONS": {
+                    "type": "header",
+                    "text": "Info icons",
+                    "size": 2
+                },
+                "icons": {
+                    "newLine": true,
+                    "sm": 12,
+                    "noDelete": false,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "iconname",
+                            "width": "50%",
+                            "title": "iconname",
+                            "tooltip": "ICONNAME",
+                            "filter": true,
+                            "sort": true,
+                            "default": ""
+                        },
+                        {
+                            "type": "image",
+                            "attr": "picture",
+                            "tooltip": "UPLOAD",
+                            "accept": "image/*",
+                            "base64": true,
+                            "crop": true
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,137 @@
+{
+    "common": {
+        "name": "netgear",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "Remote netgear",
+        "titleLang": {
+            "en": "Remote netgear",
+            "de": "Remote-Netgear",
+            "ru": "Удаленное сетевое оборудование",
+            "pt": "Equipamento remoto",
+            "nl": "Netgear op afstand",
+            "fr": "Réseau à distance",
+            "it": "Rete remota",
+            "es": "Equipo de red remoto",
+            "pl": "Zdalny Netgear",
+            "uk": "Віддалений netgear",
+            "zh-cn": "远程网件"
+        },
+        "desc": {
+            "en": "Remote Control Netgear Insight",
+            "de": "Fernsteuerung von Netgear Insight",
+            "ru": "Дистанционное управление Netgear Insight",
+            "pt": "Controle remoto Netgear Insight",
+            "nl": "Afstandsbediening Netgear Insight",
+            "fr": "Contrôle à distance Netgear Insight",
+            "it": "Controllo remoto Netgear Insight",
+            "es": "Control remoto Netgear Insight",
+            "pl": "Zdalne sterowanie Netgear Insight",
+            "uk": "Пульт дистанційного керування Netgear Insight",
+            "zh-cn": "远程控制 Netgear Insight"
+        },
+        "authors": ["Lucky-ESA <github@luckyskills.de>"],
+        "keywords": ["netgear", "switch", "insight", "hub"],
+        "license": "MIT",
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "netgear.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Lucky-ESA/ioBroker.netgear/main/admin/netgear.png",
+        "readme": "https://github.com/Lucky-ESA/ioBroker.netgear/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "mode": "daemon",
+        "type": "multimedia",
+        "compact": true,
+        "messagebox": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "docs": {
+            "en": ["docs/en/README.md"],
+            "de": ["docs/de/README.md"]
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=5.0.19"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=6.13.16"
+            }
+        ]
+    },
+    "native": {
+        "netgear": [],
+        "icons": []
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Information",
+                    "de": "Informationen",
+                    "ru": "Информация",
+                    "pt": "Informação",
+                    "nl": "Informatie",
+                    "fr": "Information",
+                    "it": "Informazioni",
+                    "es": "Información",
+                    "pl": "Informacja",
+                    "uk": "Інформація",
+                    "zh-cn": "信息"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": {
+                    "en": "Device or service connected",
+                    "de": "Geräte- oder Serviceanschluss",
+                    "ru": "Устройство или сервис подключены",
+                    "pt": "Dispositivo ou serviço conectado",
+                    "nl": "Device of dienst verbonden",
+                    "fr": "Appareil ou service connecté",
+                    "it": "Dispositivo o servizio collegato",
+                    "es": "Dispositivo o servicio conectado",
+                    "pl": "Urządzenie lub usługa połączona",
+                    "uk": "Пристрої або послуги підключені",
+                    "zh-cn": "证人或有关服务"
+                },
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}
