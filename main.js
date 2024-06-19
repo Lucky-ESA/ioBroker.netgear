@@ -194,6 +194,10 @@ class Netgear extends utils.Adapter {
             } else if (lastsplit === "reboot") {
                 this.setAckFlag(id_ack, { val: false });
                 return;
+            } else if (lastsplit === "update") {
+                this.client[netgear].event.startUpdate();
+                this.setAckFlag(id_ack, { val: false });
+                return;
             }
         }
     }
