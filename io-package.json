@@ -46,7 +46,6 @@
         },
         "authors": ["Lucky-ESA <github@luckyskills.de>"],
         "keywords": ["netgear", "switch", "insight", "hub"],
-        "license": "MIT",
         "licenseInformation": {
             "type": "free",
             "license": "MIT"
