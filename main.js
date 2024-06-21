@@ -189,7 +189,8 @@ class Netgear extends utils.Adapter {
             const netgear = id.split(".")[2];
             if (!this.client[netgear]) return;
             if (lastsplit === "name") {
-                this.setAckFlag(id_ack);
+                this.client[netgear].event.changeName(state.val);
+                this.setAckFlag(id_ack, { val: "" });
                 return;
             } else if (lastsplit === "reboot") {
                 this.setAckFlag(id_ack, { val: false });
