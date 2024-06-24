@@ -108,6 +108,27 @@ class Netgear extends utils.Adapter {
             this.client[dev.dp].config = dev;
         }
         this.setState("info.connection", true, true);
+        this.checkDeviceFolder();
+    }
+
+    /**
+     *
+     */
+    async checkDeviceFolder() {
+        try {
+            const devices = await this.getDevicesAsync();
+            for (const element of devices) {
+                const id = element["_id"].split(".").pop();
+                if (this.client[id]) {
+                    this.log.debug(`Found object ${element["_id"]}`);
+                } else {
+                    this.log.info(`Delete object ${element["_id"]}`);
+                    await this.delObjectAsync(`${id}`, { recursive: true });
+                }
+            }
+        } catch (e) {
+            this.log.error(`checkDeviceFolder: ${e}`);
+        }
     }
 
     /**
@@ -184,6 +205,7 @@ class Netgear extends utils.Adapter {
      */
     onStateChange(id, state) {
         if (state && !state.ack) {
+            if (!id.indexOf(".Remote.")) return;
             const id_ack = id;
             const lastsplit = id.split(".").pop();
             const netgear = id.split(".")[2];
