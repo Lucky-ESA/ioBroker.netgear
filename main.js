@@ -188,17 +188,35 @@ class Netgear extends utils.Adapter {
             const lastsplit = id.split(".").pop();
             const netgear = id.split(".")[2];
             if (!this.client[netgear]) return;
-            if (lastsplit === "name") {
-                this.client[netgear].event.changeName(state.val);
-                this.setAckFlag(id_ack, { val: "" });
-                return;
-            } else if (lastsplit === "reboot") {
-                this.setAckFlag(id_ack, { val: false });
-                return;
-            } else if (lastsplit === "update") {
-                this.client[netgear].event.startUpdate();
-                this.setAckFlag(id_ack, { val: false });
-                return;
+            switch (lastsplit) {
+                case "name":
+                    this.client[netgear].event.changeName(state.val);
+                    this.setAckFlag(id_ack, { val: "" });
+                    break;
+                case "reboot":
+                    this.client[netgear].event.reboot();
+                    this.setAckFlag(id_ack, { val: false });
+                    break;
+                case "update":
+                    this.client[netgear].event.startUpdate();
+                    this.setAckFlag(id_ack, { val: false });
+                    break;
+                case "cable_testing":
+                    this.client[netgear].event.cableCheck(state.val);
+                    this.setAckFlag(id_ack);
+                    break;
+                case "flow_change":
+                    this.client[netgear].event.changeSpeed();
+                    this.setAckFlag(id_ack, { val: false });
+                    break;
+                case "flow_select_speed":
+                case "flow_select_port":
+                case "flow_select_status":
+                    this.setAckFlag(id_ack);
+                    break;
+                default:
+                    // nothing
+                    break;
             }
         }
     }
