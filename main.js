@@ -27,6 +27,7 @@ class Netgear extends utils.Adapter {
         this.createDevice = helper.createDevice;
         this.createInfos = helper.createInfos;
         this.createStati = helper.createStati;
+        this.createRate = helper.createRate;
         this.double_call = {};
         this.client = {};
     }
@@ -230,6 +231,15 @@ class Netgear extends utils.Adapter {
                 case "flow_change":
                     this.client[netgear].event.changeSpeed();
                     this.setAckFlag(id_ack, { val: false });
+                    break;
+                case "rate_change":
+                    this.client[netgear].event.changeRate();
+                    this.setAckFlag(id_ack, { val: false });
+                    break;
+                case "rate_select_port":
+                case "rate_input":
+                case "rate_output":
+                    this.setAckFlag(id_ack);
                     break;
                 case "flow_select_speed":
                 case "flow_select_port":
