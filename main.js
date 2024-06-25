@@ -237,11 +237,11 @@ class Netgear extends utils.Adapter {
                     this.setAckFlag(id_ack, { val: false });
                     break;
                 case "request_get":
-                    this.client[netgear].event.own_request("GET", state.val);
+                    this.client[netgear].event.own_Request("GET", state.val);
                     this.setAckFlag(id_ack);
                     break;
                 case "request_post":
-                    this.client[netgear].event.changeRate("POST", state.val);
+                    this.client[netgear].event.own_Request("POST", state.val);
                     this.setAckFlag(id_ack);
                     break;
                 case "request_post_data":
