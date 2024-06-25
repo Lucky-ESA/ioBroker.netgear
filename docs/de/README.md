@@ -81,6 +81,37 @@
 -   `Ports.Port_01.status` Status
 -   `Ports.json` JSON Table für VIS
 
+```JSON
+[
+  {
+    "port": "1",
+    "status": "Aktiv",
+    "speed": "Auto",
+    "speed_connection": "1000M",
+    "flow": "Deaktiviert",
+    "mtu": 9198,
+    "bytes_receiced": 1030367945,
+    "bytes_sent": 78275225439,
+    "bytes_crc": 0,
+    "bit_rate_input": "Kein Limit",
+    "bit_rate_output": "Kein Limit"
+  },
+  {
+    "port": "2",
+    "status": "Aktiv",
+    "speed": "Auto",
+    "speed_connection": "1000M",
+    "flow": "Deaktiviert",
+    "mtu": 9198,
+    "bytes_receiced": 57788792694,
+    "bytes_sent": 4557799736,
+    "bytes_crc": 1,
+    "bit_rate_input": "Kein Limit",
+    "bit_rate_output": "Kein Limit"
+  }
+]
+```
+
 ![netgear_port_1.png](img/netgear_port_1.png)</br>
 ![netgear_port_2.png](img/netgear_port_2.png)</br>
 ![netgear_port_3.png](img/netgear_port_3.png)</br>
