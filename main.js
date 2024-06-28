@@ -36,7 +36,7 @@ class Netgear extends utils.Adapter {
      * Is called when databases are connected and adapter received configuration.
      */
     async onReady() {
-        this.setState("info.connection", false, true);
+        this.setState("info.connection", { val: false, ack: true });
         const isChange = await this.configcheck();
         if (isChange) {
             this.log.info(`Encrypt Passwords and restart Adapter!`);
@@ -108,7 +108,7 @@ class Netgear extends utils.Adapter {
             this.client[dev.dp].event.login(true);
             this.client[dev.dp].config = dev;
         }
-        this.setState("info.connection", true, true);
+        this.setState("info.connection", { val: true, ack: true });
         this.checkDeviceFolder();
     }
 
