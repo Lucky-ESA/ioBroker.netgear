@@ -56,7 +56,7 @@ class Netgear extends utils.Adapter {
         let devices = [];
         try {
             devices = typeof this.config.netgear === "object" ? JSON.parse(JSON.stringify(this.config.netgear)) : [];
-        } catch (e) {
+        } catch {
             devices = [];
         }
         check_name = {};
@@ -85,7 +85,7 @@ class Netgear extends utils.Adapter {
                         this.log.warn(`Cannot found password!`);
                         continue;
                     }
-                } catch (e) {
+                } catch {
                     this.log.warn(`Missing User Password!`);
                     continue;
                 }
@@ -112,9 +112,6 @@ class Netgear extends utils.Adapter {
         this.checkDeviceFolder();
     }
 
-    /**
-     *
-     */
     async checkDeviceFolder() {
         try {
             const devices = await this.getDevicesAsync();
@@ -139,9 +136,6 @@ class Netgear extends utils.Adapter {
         return ip.replace(/[.]/gu, "_").replace(this.FORBIDDEN_CHARS, "_");
     }
 
-    /**
-     *
-     */
     async configcheck() {
         try {
             let isdecode = false;
@@ -162,13 +156,14 @@ class Netgear extends utils.Adapter {
                 return true;
             }
             return false;
-        } catch (error) {
+        } catch {
             this.log.warn(`Cannot encrypt all passwords!!!`);
         }
     }
 
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
+     *
      * @param {() => void} callback
      */
     onUnload(callback) {
@@ -177,7 +172,7 @@ class Netgear extends utils.Adapter {
                 this.client[id].event.destroy();
             }
             callback();
-        } catch (e) {
+        } catch {
             callback();
         }
     }
@@ -201,16 +196,21 @@ class Netgear extends utils.Adapter {
 
     /**
      * Is called if a subscribed state changes
+     *
      * @param {string} id
      * @param {ioBroker.State | null | undefined} state
      */
     onStateChange(id, state) {
         if (state && !state.ack) {
-            if (!id.indexOf(".Remote.")) return;
+            if (!id.indexOf(".Remote.")) {
+                return;
+            }
             const id_ack = id;
             const lastsplit = id.split(".").pop();
             const netgear = id.split(".")[2];
-            if (!this.client[netgear]) return;
+            if (!this.client[netgear]) {
+                return;
+            }
             switch (lastsplit) {
                 case "name":
                     this.client[netgear].event.changeName(state.val);
@@ -268,6 +268,7 @@ class Netgear extends utils.Adapter {
     /**
      * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
      * Using this method requires "common.messagebox" property to be set to true in io-package.json
+     *
      * @param {ioBroker.Message} obj
      */
     onMessage(obj) {
@@ -275,23 +276,16 @@ class Netgear extends utils.Adapter {
             return;
         }
         this.double_call[obj._id] = true;
-        let adapterconfigs = {};
-        try {
-            // @ts-ignore
-            adapterconfigs = this.adapterConfig;
-        } catch (error) {
-            this.sendTo(obj.from, obj.command, [], obj.callback);
-            delete this.double_call[obj._id];
-            return;
-        }
         if (obj.command === "getIconList") {
             try {
                 let icon_array = [];
                 const icons = [];
                 if (obj && obj.message && obj.message.icon && obj.message.icon.icons) {
                     icon_array = obj.message.icon.icons;
-                } else if (adapterconfigs && adapterconfigs.native && adapterconfigs.native.icons) {
-                    icon_array = adapterconfigs.native.icons;
+                } else {
+                    this.sendTo(obj.from, obj.command, [], obj.callback);
+                    delete this.double_call[obj._id];
+                    return;
                 }
                 if (icon_array && Object.keys(icon_array).length > 0) {
                     for (const icon of icon_array) {
@@ -303,7 +297,7 @@ class Netgear extends utils.Adapter {
                 } else {
                     this.sendTo(obj.from, obj.command, [], obj.callback);
                 }
-            } catch (error) {
+            } catch {
                 delete this.double_call[obj._id];
                 this.sendTo(obj.from, obj.command, [], obj.callback);
             }
@@ -335,7 +329,7 @@ if (require.main !== module) {
     /**
      * @param {Partial<utils.AdapterOptions>} [options={}]
      */
-    module.exports = (options) => new Netgear(options);
+    module.exports = options => new Netgear(options);
 } else {
     // otherwise start the instance directly
     new Netgear();
