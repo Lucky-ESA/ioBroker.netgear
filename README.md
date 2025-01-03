@@ -17,14 +17,14 @@ Remote Control Netgear Switch
 
 ## Requirements
 
--   Node 18 or 20
--   JS-Controller >= 5.0.19
--   Admin >= 6.13.16
+- Node 18 or 20
+- JS-Controller >= 5.0.19
+- Admin >= 6.13.16
 
 ## Tested with
 
--   Netgear JGS524PE (24 Port PoE)
--   Netgear GS108PEv3 (8 Port PoE)
+- Netgear JGS524PE (24 Port PoE)
+- Netgear GS108PEv3 (8 Port PoE)
 
 ## Description
 
@@ -40,13 +40,13 @@ Remote Control Netgear Switch
 
 ### 0.0.1
 
--   (Lucky-ESA) initial release
+- (Lucky-ESA) initial release
 
 ## License
 
 MIT License
 
-Copyright (c) 2024 Lucky-ESA <github@luckyskills.de>
+Copyright (c) 2024-2025 Lucky-ESA <github@luckyskills.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
