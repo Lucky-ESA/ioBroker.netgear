@@ -17,7 +17,7 @@ Remote Control Netgear Switch
 
 ## Requirements
 
-- Node 18 or 20
+- Node 20 or 22
 - JS-Controller >= 5.0.19
 - Admin >= 6.13.16
 
