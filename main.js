@@ -133,7 +133,7 @@ class Netgear extends utils.Adapter {
      * @param {string} ip
      */
     forbidden_ip(ip) {
-        return ip.replace(/[.]/gu, "_").replace(this.FORBIDDEN_CHARS, "_");
+        return ip.replace(/[.]/g, "_").replace(this.FORBIDDEN_CHARS, "_");
     }
 
     async configcheck() {
