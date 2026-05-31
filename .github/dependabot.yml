@@ -11,7 +11,7 @@ updates:
           timezone: "Europe/Berlin"
       open-pull-requests-limit: 15
       assignees:
-          - "iobroker-community-adapters"
+          - "Lucky-ESA"
       versioning-strategy: "increase"
       cooldown:
           default-days: 7
@@ -30,4 +30,4 @@ updates:
           timezone: "Europe/Berlin"
       open-pull-requests-limit: 15
       assignees:
-          - "iobroker-community-adapters"
+          - "Lucky-ESA"
